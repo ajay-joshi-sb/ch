@@ -105,14 +105,7 @@ const FAQ = () => {
           ))}
         </div>
 
-        <div className="max-w-xl mx-auto text-center mt-12 reveal-on-scroll">
-          <p className="text-gray-300 mb-6">
-            Still have questions? We're here to help.
-          </p>
-          <CTAButton variant="secondary">
-            Contact Support
-          </CTAButton>
-        </div>
+        
       </div>
     </section>
   );

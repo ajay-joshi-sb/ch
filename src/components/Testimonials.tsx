@@ -152,23 +152,7 @@ const Testimonials = () => {
           </button>
         </div>
         
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">HouseCallPro</div>
-          </div>
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">ServiceTitan</div>
-          </div>
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">Jobber</div>
-          </div>
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">Acculynx</div>
-          </div>
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">CallRail</div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

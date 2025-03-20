@@ -37,14 +37,15 @@ const Index = () => {
     <div className="flex flex-col min-h-screen bg-darkblue">
       <NavBar />
       <main>
-        <VoiceAgent />
-        <VoiceDemo />
-        <Features />
-        <VideoSection />
-        <Testimonials />
-        <Pricing />
-        <FAQ />
+      <VoiceAgent />
+      <VoiceDemo />
+      <Features />
+      <VideoSection />
+      <Testimonials />
+      <Pricing />
+      <FAQ />
       </main>
+      
       <Footer />
     </div>
   );

@@ -61,6 +61,28 @@
 
     --radius: 0.5rem;
 
+    /* Spacing System */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+
+    /* Typography Scale */
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.25rem;
+    --fs-2xl: 1.5rem;
+    --fs-3xl: 1.875rem;
+    --fs-4xl: 2.25rem;
+    --fs-5xl: 3rem;
+    --fs-6xl: 3.75rem;
+    --fs-7xl: 4.5rem;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -91,6 +113,34 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold text-white;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply text-gray-300;
+  }
+
+  section {
+    @apply py-16 md:py-20;
+  }
+
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 mx-auto;
+  }
+
   .glass-card {
     @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-subtle;
   }
@@ -117,6 +167,18 @@
   .stat-card {
     @apply bg-brand-600 rounded-full px-6 py-3 text-white font-medium text-sm md:text-base flex items-center justify-center;
   }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-display font-bold mb-6 text-white text-balance;
+  }
+
+  .section-subheading {
+    @apply text-lg text-gray-300 max-w-2xl mx-auto;
+  }
+
+  .feature-tag {
+    @apply inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-300 bg-brand-900/40 rounded-full border border-brand-700/50;
+  }
 }
 
 @layer utilities {
@@ -142,4 +204,50 @@
   .step-number {
     @apply absolute -top-4 -right-4 w-10 h-10 bg-brand-600 text-white rounded-md flex items-center justify-center font-bold text-lg;
   }
+
+  /* Responsive Utilities */
+  .responsive-container {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+  }
+
+  .responsive-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .responsive-flex {
+    @apply flex flex-col md:flex-row items-center;
+  }
+
+  /* Consistent Card Styling */
+  .content-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 transition-all hover:border-brand-500/30;
+  }
+}
+
+/* Consistent Animation Effects */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Improved Form Element Styling */
+input, textarea, select {
+  @apply bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-gray-500 focus:border-brand-500 focus:ring focus:ring-brand-500/20 focus:outline-none transition-colors;
+}
+
+button {
+  @apply transition-all duration-200;
+}
+
+/* Consistent CTA Button Styling */
+.cta-primary {
+  @apply bg-brand-600 text-white hover:bg-brand-700 px-6 py-3 rounded-lg font-medium;
+}
+
+.cta-secondary {
+  @apply bg-transparent text-white border border-white/20 hover:bg-white/5 px-6 py-3 rounded-lg font-medium;
 }
