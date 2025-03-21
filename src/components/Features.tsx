@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { PhoneCall, Calendar, Clock, UserPlus, ShieldCheck, Plug, Bolt, Wrench, Bot, Gauge } from 'lucide-react';
+import { PhoneCall, Calendar, UserPlus, Plug, Bolt, Bot } from 'lucide-react';
 import CTAButton from './CTAButton';
 
 interface FeatureCardProps {
@@ -9,12 +9,12 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
-  <div className="glass-card p-6 rounded-xl h-full reveal-on-scroll transition-all duration-500 opacity-0 transform translate-y-8">
-    <div className="w-14 h-14 rounded-full bg-brand-500/20 flex items-center justify-center mb-4">
+  <div className="glass-card p-5 rounded-xl h-full reveal-on-scroll transition-all duration-500 opacity-0 transform translate-y-8 hover:translate-y-0 hover:shadow-glow-sm group border border-brand-700/20 hover:border-brand-500/30">
+    <div className="w-12 h-12 rounded-full bg-brand-500/10 flex items-center justify-center mb-4 mx-auto group-hover:bg-brand-500/20 transition-all duration-300">
       {icon}
     </div>
-    <h3 className="text-xl font-display font-semibold mb-3 text-white">{title}</h3>
-    <p className="text-gray-300">{description}</p>
+    <h3 className="text-lg font-display font-semibold mb-3 text-white text-center group-hover:text-brand-400 transition-colors duration-300">{title}</h3>
+    <p className="text-gray-300 text-center text-sm leading-relaxed">{description}</p>
   </div>
 );
 
@@ -47,90 +47,76 @@ const Features = () => {
   }, []);
 
   return (
-    <section id="features" ref={featuresRef} className="py-24 bg-darkblue relative overflow-hidden">
-      {/* Background gradient elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full filter blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-700/10 rounded-full filter blur-3xl"></div>
+    <section id="features" ref={featuresRef} className="py-16 bg-darkblue relative overflow-hidden">
+      {/* Enhanced background effects */}
+      <div className="absolute top-0 left-1/3 w-80 h-80 bg-brand-500/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
+      <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-brand-700/10 rounded-full filter blur-3xl animate-pulse-slow animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-radial from-brand-900/20 to-transparent opacity-80"></div>
       
-      <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-20">
-          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-brand-300 bg-brand-900/40 rounded-full reveal-on-scroll border border-brand-700/50 shadow-glow">
+      {/* Subtle grid overlay */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10 max-w-5xl">
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <span className="inline-block px-4 py-1.5 mb-5 text-xs font-medium text-brand-300 bg-brand-900/40 rounded-full reveal-on-scroll border border-brand-700/50 shadow-glow backdrop-blur-sm">
             Trusted by Home Service &amp; Franchise Businesses
           </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-balance reveal-on-scroll text-white leading-tight">
-            AI Voice Agents That <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-brand-600">Convert More Calls</span>
+          <h2 className="text-2xl md:text-4xl font-display font-bold mb-5 text-balance reveal-on-scroll text-white leading-tight">
+            AI Voice Agents That <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600">Convert More Calls</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto reveal-on-scroll leading-relaxed">
-            Our inbound call handling solution is specifically designed for plumbers, HVAC technicians, roofers, electricians, and franchises to convert more leads into booked jobs.
+          <p className="text-base text-gray-300 max-w-lg mx-auto reveal-on-scroll leading-relaxed">
+            Our inbound call handling solution is designed for plumbers, HVAC technicians, roofers, electricians, and franchises to convert more leads into booked jobs.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        {/* Enhanced feature grid with hover effects */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mb-16 px-2 md:px-6">
           <FeatureCard
-            icon={<PhoneCall className="h-6 w-6 text-brand-500" />}
+            icon={<PhoneCall className="h-5 w-5 text-brand-500 group-hover:text-brand-400" />}
             title="24/7 Call Answering"
-            description="Our AI voice agents answer every call instantly, ensuring you never miss another job opportunity, even after hours."
+            description="Answer every call instantly, never miss another job opportunity."
           />
           <FeatureCard
-            icon={<Calendar className="h-6 w-6 text-brand-500" />}
+            icon={<Calendar className="h-5 w-5 text-brand-500 group-hover:text-brand-400" />}
             title="Direct Scheduling"
-            description="Book appointments instantly into your preferred scheduling system with real-time availability checks."
+            description="Book appointments instantly with real-time availability checks."
           />
           <FeatureCard
-            icon={<UserPlus className="h-6 w-6 text-brand-500" />}
+            icon={<UserPlus className="h-5 w-5 text-brand-500 group-hover:text-brand-400" />}
             title="Lead Qualification"
-            description="Automatically collect service details, location, and requirements to prepare your team for every job."
+            description="Collect service details to prepare your team for every job."
           />
           <FeatureCard
-            icon={<Plug className="h-6 w-6 text-brand-500" />}
+            icon={<Plug className="h-5 w-5 text-brand-500 group-hover:text-brand-400" />}
             title="Seamless Integrations"
-            description="Works flawlessly with your existing tools including HouseCallPro, ServiceTitan, Jobber, Acculynx, and more."
+            description="Works with HouseCallPro, ServiceTitan, Jobber, and more."
           />
           <FeatureCard
-            icon={<Bolt className="h-6 w-6 text-brand-500" />}
+            icon={<Bolt className="h-5 w-5 text-brand-500 group-hover:text-brand-400" />}
             title="Instant Responses"
-            description="No hold times means happier customers who are more likely to book with your business."
+            description="No hold times means happier customers who book more often."
           />
           <FeatureCard
-            icon={<Bot className="h-6 w-6 text-brand-500" />}
+            icon={<Bot className="h-5 w-5 text-brand-500 group-hover:text-brand-400" />}
             title="Industry-Trained AI"
-            description="Our voice agents understand home service terminology, pricing, and common customer issues."
+            description="Our AI understands home service terminology and pricing."
           />
         </div>
 
-        {/* Integration Partners Section - Enhanced */}
-        <div className="py-8 px-6 bg-brand-900/30 rounded-2xl border border-brand-700/30 backdrop-blur-sm max-w-5xl mx-auto">
-          <h3 className="text-xl md:text-2xl font-display font-semibold mb-8 text-center text-white reveal-on-scroll">
-            Seamlessly Integrates With Different Tools
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            {[
-              { name: "HouseCallPro", logo: "hcp-logo.svg" },
-              { name: "ServiceTitan", logo: "st-logo.svg" },
-              { name: "Jobber", logo: "jobber-logo.svg" },
-              { name: "Acculynx", logo: "acculynx-logo.svg" },
-              { name: "CallRail", logo: "callrail-logo.svg" },
-            ].map((partner, index) => (
-              <div key={partner.name} className="flex flex-col items-center justify-center reveal-on-scroll">
-                <div className="h-1 text-brand-300 font-semibold text-center">
-                  {partner.name}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
-        {/* CTA Section - Uncommented and Enhanced */}
-        <div className="mt-20 text-center reveal-on-scroll">
+        {/* Enhanced CTA Section */}
+        <div className="mt-12 text-center reveal-on-scroll bg-brand-900/20 py-10 px-6 rounded-2xl border border-brand-700/20 backdrop-blur-sm max-w-3xl mx-auto">
+          <h3 className="text-xl md:text-2xl font-display font-semibold mb-6 text-white">Ready to Convert More Calls?</h3>
           <CTAButton 
             variant="primary" 
-            size="lg" 
+            size="md" 
             icon
-            className="mx-auto shadow-glow hover:shadow-glow-intense transition-all duration-300"
+            className="mx-auto shadow-glow hover:shadow-glow-intense transition-all duration-300 hover:scale-105"
           >
             Book A Demo Today
           </CTAButton>
-          <p className="text-sm text-brand-300 mt-4 opacity-80">No commitment required • 15-minute setup</p>
+          <p className="text-xs text-brand-300 mt-4 opacity-80">No commitment required • 15-minute setup</p>
         </div>
       </div>
     </section>

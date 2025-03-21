@@ -43,37 +43,52 @@ const ServiceCallOpportunity = () => {
         </div>
 
         {/* Phone Section */}
-        <div className="flex justify-center mb-10 lg:mb-16">
+        <div className="flex justify-center mb-0">
           <div className="relative">
-            {/* Phone device frame with fade effect */}
-            <div className="relative w-72 sm:w-80 md:w-96 h-[480px] rounded-[3rem] bg-[#1a1a1a] shadow-[0_0_60px_rgba(59,130,246,0.3)] overflow-hidden transition-all hover:scale-[1.02] duration-500">
-              {/* Bottom fade overlay */}
-              <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/90 to-transparent z-20 pointer-events-none"></div>
+            {/* Improved Phone device frame with flat bottom */}
+            <div className="relative w-72 sm:w-80 md:w-96 h-[480px] rounded-t-[3rem] rounded-b-none bg-[#1a1a1a] shadow-[0_0_60px_rgba(59,130,246,0.3)] overflow-hidden transition-all hover:scale-[1.02] duration-500">
+              {/* Improved bottom fade overlay - more gradual fade */}
+              <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#071018] via-[#071018]/60 to-transparent z-20 pointer-events-none"></div>
+              
+              {/* Light reflection overlay for realism */}
+              <div className="absolute top-0 left-0 right-0 h-1/4 bg-gradient-to-b from-white/5 to-transparent pointer-events-none z-20"></div>
 
-              {/* Phone bezel */}
-              <div className="absolute inset-0 rounded-[3rem] border-[12px] border-[#111111] pointer-events-none shadow-inner"></div>
+              {/* Improved Phone bezel with flat bottom */}
+              <div className="absolute inset-0 rounded-t-[3rem] rounded-b-none border-[12px] border-b-[10px] border-[#111111] pointer-events-none shadow-inner">
+                {/* Inner bezel highlight for realism */}
+                <div className="absolute inset-[-1px] rounded-t-[2.7rem] rounded-b-none border border-white/5 pointer-events-none"></div>
+              </div>
 
-              {/* Side buttons */}
-              <div className="absolute right-[-2px] top-28 w-[4px] h-12 bg-[#111111] rounded-l-md shadow-inner"></div>
-              <div className="absolute left-[-2px] top-24 w-[4px] h-8 bg-[#111111] rounded-r-md shadow-inner"></div>
-              <div className="absolute left-[-2px] top-36 w-[4px] h-8 bg-[#111111] rounded-r-md shadow-inner"></div>
+              {/* Improved Side buttons with highlights */}
+              <div className="absolute right-[-2px] top-28 w-[4px] h-12 bg-[#0a0a0a] rounded-l-md shadow-inner">
+                <div className="absolute inset-y-0 left-0 w-[1px] bg-white/5"></div>
+              </div>
+              <div className="absolute left-[-2px] top-24 w-[4px] h-8 bg-[#0a0a0a] rounded-r-md shadow-inner">
+                <div className="absolute inset-y-0 right-0 w-[1px] bg-white/5"></div>
+              </div>
+              <div className="absolute left-[-2px] top-36 w-[4px] h-8 bg-[#0a0a0a] rounded-r-md shadow-inner">
+                <div className="absolute inset-y-0 right-0 w-[1px] bg-white/5"></div>
+              </div>
 
-              {/* Phone screen content */}
-              <div className="absolute inset-0 rounded-[2.75rem] bg-gradient-to-bl from-[#152238] to-[#0b1423] overflow-hidden">
-                {/* Black notch */}
+              {/* Phone screen content with flat bottom */}
+              <div className="absolute inset-0 rounded-t-[2.75rem] rounded-b-none bg-gradient-to-bl from-[#152238] to-[#0b1423] overflow-hidden">
+                {/* Improved Black notch with subtle details */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-8 bg-black rounded-b-2xl z-10 flex items-center justify-center shadow-md">
-                  <div className="w-4 h-4 bg-black rounded-full border-[1px] border-gray-700 mr-2"></div>
-                  <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
+                  {/* Subtle camera element */}
+                  <div className="w-2 h-2 rounded-full bg-black border border-gray-800 mr-10 shadow-inner overflow-hidden">
+                    <div className="w-1 h-1 rounded-full bg-gray-700/30 absolute top-0.5 left-0.5"></div>
+                  </div>
                 </div>
 
-                {/* Screen overlays */}
+                {/* Enhanced Screen overlays for realism */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
                 <div className="absolute top-0 right-0 w-1/3 h-1/4 bg-gradient-to-bl from-blue-400/10 to-transparent pointer-events-none rounded-bl-full"></div>
+                <div className="absolute bottom-0 left-0 w-1/2 h-1/3 bg-gradient-to-tr from-black/20 to-transparent pointer-events-none"></div>
 
                 {/* Main content container */}
                 <div className="pt-12 px-6 h-full flex flex-col">
                   {/* Top bar */}
-                  <div className="flex justify-between items-center mb-6 px-2">
+                  <div className="flex justify-between items-center mb-5 px-2">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                         <svg
@@ -156,22 +171,25 @@ const ServiceCallOpportunity = () => {
                     </div>
                   </div>
 
-                  {/* Form container */}
-                  <div className="bg-gradient-to-b from-[#183052]/90 to-[#0a1425]/90 rounded-2xl p-6 shadow-lg border border-blue-900/30 backdrop-blur-sm flex-1 flex flex-col mt-2">
-                    <div className="flex-1 flex flex-col justify-center">
-                      <h3 className="text-xl md:text-2xl font-semibold text-center mb-6">
+                  {/* Form container with enhanced glass effect */}
+                  <div className="bg-gradient-to-b from-[#183052]/90 to-[#0a1425]/90 rounded-2xl p-5 shadow-lg border border-blue-900/30 backdrop-blur-sm flex-1 flex flex-col mt-2 relative overflow-hidden">
+                    {/* Glass reflections */}
+                    <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+                    <div className="absolute -right-12 -top-12 w-24 h-24 bg-blue-400/10 blur-xl rounded-full pointer-events-none"></div>
+                    
+                    <div className="flex-1 flex flex-col justify-center relative z-10">
+                      <h3 className="text-xl md:text-2xl font-semibold text-center mb-4">
                         Try it{" "}
                         <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
-                          Free
-                        </span>{" "}
-                        Today
+                          for yourself
+                        </span>
                       </h3>
 
                       <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="relative">
                           <input
                             type="tel"
-                            placeholder="Enter Mobile Number"
+                            placeholder="Enter Mobile Here"
                             className="w-full py-3 px-5 rounded-xl bg-white/10 backdrop-blur-sm border-2 border-blue-400/30 text-center text-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400/50 focus:ring-2 focus:ring-blue-400/20 transition-all shadow-inner"
                             value={mobileNumber}
                             onChange={(e) => setMobileNumber(e.target.value)}
@@ -216,19 +234,25 @@ const ServiceCallOpportunity = () => {
                         </button>
                       </form>
                     </div>
+                    
+                    {/* Reduced space at bottom */}
+                    <div className="h-10"></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Phone shadow */}
-            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-4/5 h-4 bg-black/30 rounded-full blur-md"></div>
+            {/* Reduced multi-layer fade-out effect with shorter height */}
+            <div className="relative h-16 w-full">
+              <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-t from-[#071018]/80 to-[#071018]/10"></div>
+              <div className="absolute top-8 left-0 right-0 h-8 bg-[#071018]"></div>
+            </div>
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-10 lg:mt-16">
-          <h3 className="text-center text-2xl md:text-3xl font-bold mb-8 text-white">
+        {/* Stats Section - Reduced top margin */}
+        <div className="mt-0">
+          <h3 className="text-center text-2xl md:text-3xl font-bold mb-6 text-white">
             Trusted by 850+ Businesses Worldwide
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
@@ -251,29 +275,6 @@ const ServiceCallOpportunity = () => {
             ))}
           </div>
         </div>
-
-        
-        {/* <div className="mt-20 grid grid-cols-2 md:grid-cols-5 gap-8 max-w-4xl mx-auto">
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">
-              HouseCallPro
-            </div>
-          </div>
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">
-              ServiceTitan
-            </div>
-          </div>
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">Jobber</div>
-          </div>
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">Acculynx</div>
-          </div>
-          <div className="flex items-center justify-center reveal-on-scroll">
-            <div className="h-12 text-brand-300 font-semibold">CallRail</div>
-          </div>
-        </div> */}
       </div>
 
       {/* Animations */}
