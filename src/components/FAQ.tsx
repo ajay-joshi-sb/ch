@@ -11,17 +11,17 @@ interface FAQItemProps {
 
 const FAQItem = ({ question, answer, isOpen, toggleOpen }: FAQItemProps) => {
   return (
-    <div className="border-b border-white/10 last:border-b-0 reveal-on-scroll">
+    <div className="border-b border-border last:border-b-0 reveal-on-scroll">
       <button
         className="flex justify-between items-center w-full py-5 px-4 text-left focus:outline-none"
         onClick={toggleOpen}
       >
-        <h3 className="text-lg font-medium text-white">{question}</h3>
+        <h3 className="text-lg font-medium">{question}</h3>
         <div className="flex-shrink-0 ml-4">
           {isOpen ? (
-            <Minus className="h-5 w-5 text-brand-400" />
+            <Minus className="h-5 w-5 text-primary" />
           ) : (
-            <Plus className="h-5 w-5 text-brand-400" />
+            <Plus className="h-5 w-5 text-primary" />
           )}
         </div>
       </button>
@@ -30,7 +30,7 @@ const FAQItem = ({ question, answer, isOpen, toggleOpen }: FAQItemProps) => {
           isOpen ? 'max-h-96 opacity-100 pb-5 px-4' : 'max-h-0 opacity-0'
         }`}
       >
-        <p className="text-gray-300">{answer}</p>
+        <p className="text-muted-foreground">{answer}</p>
       </div>
     </div>
   );
@@ -63,37 +63,25 @@ const FAQ = () => {
     {
       question: "How quickly can I get up and running?",
       answer: "Most customers are fully operational within 3-5 business days. This includes integration setup, voice agent training on your specific services, and testing. For businesses with standard workflows, we can sometimes deploy even faster."
-    },
-    {
-      question: "What happens if the voice agent can't answer a question?",
-      answer: "If a customer asks something outside the voice agent's knowledge base, it will gracefully acknowledge the limitation and offer to take a message, schedule a callback, or transfer to an on-call person depending on your preference and the urgency of the situation."
-    },
-    {
-      question: "Can I customize what the voice agent says?",
-      answer: "Absolutely! You can customize the script, greeting, questions asked for qualification, service offerings, pricing discussions, and more. Enterprise plans include fully branded voice experiences tailored to your company's tone and style."
-    },
-    {
-      question: "How do I measure the ROI of using PipelineGenerator?",
-      answer: "Our dashboard provides comprehensive analytics on call volume, conversion rates, appointment bookings, and lead qualification. You'll see exactly how many calls would have been missed otherwise, how many appointments were booked, and the estimated revenue value based on your average ticket value."
     }
   ];
 
   return (
-    <section id="faq" className="py-20 bg-darkblue">
+    <section id="faq" className="py-20 bg-background">
       <div className="container px-4 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-100 bg-brand-700/30 rounded-full reveal-on-scroll">
+          <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full reveal-on-scroll">
             Questions & Answers
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-white text-balance reveal-on-scroll">
-            Frequently Asked <span className="text-gradient">Questions</span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-balance reveal-on-scroll">
+            Frequently Asked <span className="text-primary">Questions</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto reveal-on-scroll">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto reveal-on-scroll">
             Everything you need to know about PipelineGenerator's AI voice agents for your home service business
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto glass-card rounded-xl overflow-hidden">
+        <div className="max-w-3xl mx-auto bg-card rounded-xl shadow-sm">
           {faqs.map((faq, index) => (
             <FAQItem
               key={index}
@@ -104,8 +92,6 @@ const FAQ = () => {
             />
           ))}
         </div>
-
-        
       </div>
     </section>
   );

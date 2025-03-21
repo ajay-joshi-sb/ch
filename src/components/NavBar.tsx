@@ -25,8 +25,8 @@ const NavBar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled 
-          ? "bg-darkblue/95 backdrop-blur-md shadow-lg border-b border-brand-900/50" 
-          : "bg-darkblue/80 backdrop-blur-md"
+          ? "bg-primary-950/95 backdrop-blur-md shadow-lg border-b border-primary-900/50" 
+          : "bg-primary-950/80 backdrop-blur-md"
       )}
     >
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
@@ -38,7 +38,7 @@ const NavBar = () => {
                 alt="PipelineGenerator Logo" 
                 className="h-8 w-8 mr-2"
               />
-              <span className="text-2xl font-display font-semibold text-white">
+              <span className="text-2xl font-display font-semibold text-foreground">
                 PipelineGenerator
               </span>
             </a>
@@ -48,19 +48,19 @@ const NavBar = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <a 
               href="#features" 
-              className="text-gray-100 hover:text-white transition-colors text-sm font-medium"
+              className="text-foreground/80 hover:text-foreground transition-colors text-sm font-medium"
             >
               Features
             </a>
             <a 
               href="#testimonials" 
-              className="text-gray-100 hover:text-white transition-colors text-sm font-medium"
+              className="text-foreground/80 hover:text-foreground transition-colors text-sm font-medium"
             >
               Testimonials
             </a>
             <a 
               href="#pricing" 
-              className="text-gray-100 hover:text-white transition-colors text-sm font-medium"
+              className="text-foreground/80 hover:text-foreground transition-colors text-sm font-medium"
             >
               Pricing
             </a>
@@ -76,7 +76,7 @@ const NavBar = () => {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-200 focus:outline-none"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-foreground/80 focus:outline-none"
             onClick={toggleMobileMenu}
           >
             {isMobileMenuOpen ? (
@@ -90,7 +90,7 @@ const NavBar = () => {
         {/* Mobile Menu */}
         <div 
           className={cn(
-            "md:hidden absolute left-0 right-0 bg-darkblue shadow-lg overflow-hidden transition-all duration-300 ease-in-out border-b border-brand-900/50",
+            "md:hidden absolute left-0 right-0 bg-primary-950 shadow-lg overflow-hidden transition-all duration-300 ease-in-out border-b border-primary-900/50",
             isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
           )}
         >
@@ -98,21 +98,21 @@ const NavBar = () => {
             <nav className="flex flex-col space-y-4">
               <a 
                 href="#features" 
-                className="text-white hover:text-gray-200 transition-colors py-2 text-base font-medium"
+                className="text-foreground hover:text-foreground/80 transition-colors py-2 text-base font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Features
               </a>
               <a 
                 href="#testimonials" 
-                className="text-white hover:text-gray-200 transition-colors py-2 text-base font-medium"
+                className="text-foreground hover:text-foreground/80 transition-colors py-2 text-base font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Testimonials
               </a>
               <a 
                 href="#pricing" 
-                className="text-white hover:text-gray-200 transition-colors py-2 text-base font-medium"
+                className="text-foreground hover:text-foreground/80 transition-colors py-2 text-base font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Pricing

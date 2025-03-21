@@ -1,6 +1,5 @@
-
 import { useEffect, useRef } from 'react';
-import { PlayCircle, CheckCircle } from 'lucide-react';
+import { PlayCircle } from 'lucide-react';
 import CTAButton from './CTAButton';
 
 const VideoSection = () => {
@@ -36,30 +35,34 @@ const VideoSection = () => {
   };
 
   return (
-    <section id="video" ref={sectionRef} className="py-20 bg-gradient-to-b from-darkblue to-black/90">
+    <section 
+      id="video" 
+      ref={sectionRef} 
+      className="py-20 bg-gradient-to-b from-primary-950 to-background/90"
+    >
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-300 bg-brand-900/40 rounded-full reveal-on-scroll border border-brand-700/50">
+          <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-primary-300 bg-primary-900/40 rounded-full reveal-on-scroll border border-primary-700/50">
             See Our AI Voice Agent in Action
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-balance reveal-on-scroll text-white">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-balance reveal-on-scroll text-foreground">
             How Our <span className="text-gradient">AI Voice Agents</span> Convert Calls into Bookings
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto reveal-on-scroll">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto reveal-on-scroll">
             Watch a demonstration of how our AI voice agents handle real customer calls, qualify leads, and schedule appointments in real-time.
           </p>
         </div>
         
         <div className="max-w-4xl mx-auto reveal-on-scroll">
-          <div className="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-brand-700/50 group">
+          <div className="relative aspect-video rounded-xl overflow-hidden bg-background/40 border border-primary-700/50 group">
             {/* Video thumbnail - replace with actual thumbnail when available */}
             <div 
-              className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/70 flex items-center justify-center cursor-pointer group-hover:from-black/30 group-hover:to-black/80 transition-all duration-300"
+              className="absolute inset-0 bg-gradient-to-br from-background/20 to-background/70 flex items-center justify-center cursor-pointer group-hover:from-background/30 group-hover:to-background/80 transition-all duration-300"
               onClick={openVideo}
             >
               <div className="transform transition-all duration-300 group-hover:scale-110">
-                <PlayCircle className="w-20 h-20 text-brand-500 opacity-90 group-hover:opacity-100" />
-                <span className="block mt-4 text-white font-medium">Watch Demo Video</span>
+                <PlayCircle className="w-20 h-20 text-primary-500 opacity-90 group-hover:opacity-100" />
+                <span className="block mt-4 text-foreground font-medium">Watch Demo Video</span>
               </div>
             </div>
             
@@ -70,52 +73,6 @@ const VideoSection = () => {
             />
           </div>
           
-          {/* <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            <div className="bg-black/20 p-6 rounded-lg border border-brand-700/50">
-              <h3 className="text-xl font-semibold text-white mb-4">How It Works</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Our AI answers calls immediately, 24/7</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Understands customer needs through natural conversation</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Qualifies leads by asking relevant questions</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Books appointments directly into your scheduling system</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div className="bg-black/20 p-6 rounded-lg border border-brand-700/50">
-              <h3 className="text-xl font-semibold text-white mb-4">Business Benefits</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Never miss another opportunity, even after hours</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Reduce overhead costs for call handling</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Increase conversion rates by 35% on average</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Get detailed insights from every call</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-           */}
           <div className="mt-10 text-center">
             <CTAButton 
               variant="primary" 
