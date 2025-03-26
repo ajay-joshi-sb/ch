@@ -30,27 +30,26 @@
 
 @layer base {
   :root {
-    /* Futuristic Light Purple Neon Theme */
-    --background: 260 30% 98%;
-    --foreground: 260 30% 20%;
-    --card: 260 30% 99%;
-    --card-foreground: 260 30% 20%;
-    --popover: 260 30% 98%;
-    --popover-foreground: 260 30% 20%;
-    --primary: 265 90% 70%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 280 90% 80%;
-    --secondary-foreground: 260 40% 20%;
-    --muted: 260 30% 94%;
-    --muted-foreground: 260 20% 40%;
-    --accent: 230 100% 75%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 350 95% 65%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 260 50% 90%;
-    --input: 260 30% 92%;
-    --ring: 265 90% 70%;
-    --radius: 0.6rem;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 224 76% 48%;
+    --radius: 0.5rem;
 
     /* Typography Scale */
     --font-size-xs: 0.75rem;
@@ -78,12 +77,12 @@
     --spacing-20: 5rem;
     --spacing-24: 6rem;
     
-    /* Neon Shadows */
-    --shadow-sm: 0 0 5px rgba(168, 107, 255, 0.2);
-    --shadow: 0 0 10px rgba(168, 107, 255, 0.3);
-    --shadow-md: 0 0 15px rgba(168, 107, 255, 0.3);
-    --shadow-lg: 0 0 20px rgba(168, 107, 255, 0.4);
-    --shadow-xl: 0 0 30px rgba(168, 107, 255, 0.5);
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
   
   * {
@@ -95,12 +94,12 @@
   }
   
   body {
-    @apply bg-gradient-to-br from-violet-50 via-purple-50 to-indigo-50 text-foreground font-sans antialiased;
+    @apply bg-darkblue text-foreground font-sans antialiased;
   }
 
   /* Typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold text-foreground tracking-tight;
+    @apply font-display font-bold text-white tracking-tight;
   }
 
   h1 {
@@ -116,7 +115,7 @@
   }
 
   p {
-    @apply text-foreground/80 leading-relaxed;
+    @apply text-gray-300 leading-relaxed;
   }
 
   /* Layout */
@@ -128,43 +127,17 @@
     @apply py-16 md:py-24;
   }
 
-  /* Futuristic Components */
+  /* Components */
   .glass-card {
-    @apply bg-white/70 backdrop-blur-md border border-purple-200/80 rounded-xl shadow-purple-glow;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-  }
-
-  .neo-card {
-    @apply bg-white rounded-xl p-6 shadow-purple-glow border border-purple-100;
-    background: linear-gradient(135deg, #ffffff, #f9f5ff);
-  }
-  
-  .futuristic-panel {
-    @apply bg-gradient-to-br from-white/90 to-white/50 backdrop-blur-sm rounded-xl border border-purple-200/50 p-6 shadow-purple-glow;
-  }
-
-  .neon-border {
-    @apply border-2 border-purple-400 rounded-xl;
-    box-shadow: 0 0 0 1px rgba(168, 107, 255, 0.1), 0 0 0 4px rgba(168, 107, 255, 0.05);
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-lg;
   }
 
   .feature-card {
-    @apply bg-white/80 rounded-xl p-6 border border-violet-200 transition-all duration-300 hover:border-violet-300 hover:shadow-purple-glow;
+    @apply bg-black/20 rounded-xl p-6 border border-brand-700/30 transition-all duration-300 hover:border-brand-600/50 hover:bg-black/30;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-indigo-400;
-  }
-
-  /* Neon Text */
-  .neon-text {
-    @apply text-violet-600;
-    text-shadow: 0 0 5px rgba(168, 107, 255, 0.5), 0 0 15px rgba(168, 107, 255, 0.3);
-  }
-
-  .neon-text-accent {
-    @apply text-indigo-500;
-    text-shadow: 0 0 5px rgba(99, 102, 241, 0.5), 0 0 15px rgba(99, 102, 241, 0.3);
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-brand-600;
   }
 
   /* Animations */
@@ -177,20 +150,16 @@
   }
 
   /* Forms */
-  input[type="text"], input[type="email"], input[type="password"], textarea {
-    @apply bg-white/70 backdrop-blur-sm border border-purple-200 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-transparent transition-all duration-200;
-  }
-
   input[type="range"] {
-    @apply w-full h-2 bg-purple-100 rounded-lg appearance-none cursor-pointer;
+    @apply w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer;
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    @apply appearance-none w-4 h-4 bg-violet-500 rounded-full cursor-pointer transition-all duration-200 hover:bg-violet-400 shadow-sm;
+    @apply appearance-none w-4 h-4 bg-brand-500 rounded-full cursor-pointer transition-all duration-200 hover:bg-brand-400;
   }
 
   input[type="range"]::-moz-range-thumb {
-    @apply w-4 h-4 bg-violet-500 rounded-full border-none cursor-pointer transition-all duration-200 hover:bg-violet-400 shadow-sm;
+    @apply w-4 h-4 bg-brand-500 rounded-full border-none cursor-pointer transition-all duration-200 hover:bg-brand-400;
   }
 
   /* Buttons */
@@ -199,19 +168,15 @@
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-violet-500 to-purple-500 text-white hover:from-violet-600 hover:to-purple-600 focus:ring-violet-400 shadow-md hover:shadow-purple-glow;
+    @apply bg-brand-600 text-white hover:bg-brand-500 focus:ring-brand-500;
   }
 
   .btn-secondary {
-    @apply bg-gradient-to-r from-indigo-400 to-blue-400 text-white hover:from-indigo-500 hover:to-blue-500 focus:ring-indigo-300 shadow-md hover:shadow-indigo-glow;
+    @apply bg-white/10 text-white hover:bg-white/20 focus:ring-white;
   }
 
   .btn-outline {
-    @apply border border-violet-400 text-violet-600 hover:bg-violet-50 focus:ring-violet-300 hover:shadow-sm;
-  }
-
-  .btn-glass {
-    @apply bg-white/30 backdrop-blur-md border border-white/50 text-violet-700 hover:bg-white/50 shadow-sm hover:shadow-md transition-all duration-300;
+    @apply border border-brand-600 text-brand-500 hover:bg-brand-600/10 focus:ring-brand-500;
   }
 
   /* Custom Utilities */
@@ -221,182 +186,11 @@
 }
 
 @layer utilities {
-  .shadow-purple-glow {
-    box-shadow: 0 4px 20px -2px rgba(168, 107, 255, 0.2);
+  .shadow-glow {
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
   }
 
-  .shadow-purple-glow-md {
-    box-shadow: 0 8px 25px -5px rgba(168, 107, 255, 0.25);
-  }
-
-  .shadow-purple-glow-lg {
-    box-shadow: 0 10px 30px -5px rgba(168, 107, 255, 0.3), 0 4px 10px -5px rgba(168, 107, 255, 0.2);
-  }
-  
-  .shadow-indigo-glow {
-    box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.25);
-  }
-  
-  .glow-on-hover:hover {
-    box-shadow: 0 0 15px rgba(168, 107, 255, 0.4);
-  }
-  
-  .border-glow {
-    border: 1px solid rgba(168, 107, 255, 0.3);
-  }
-  
-  .purple-pulse {
-    animation: purple-pulse 3s infinite;
-  }
-  
-  @keyframes purple-pulse {
-    0%, 100% {
-      box-shadow: 0 0 15px rgba(168, 107, 255, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 25px rgba(168, 107, 255, 0.5);
-    }
-  }
-
-  .gradient-border {
-    position: relative;
-    border-radius: 0.75rem;
-    background-clip: padding-box;
-    padding: 1.5rem;
-  }
-
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    margin: -2px;
-    border-radius: inherit;
-    background: linear-gradient(to right, #c084fc, #818cf8);
-  }
-
-  .frosted-glass {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  /* Purple Pattern Utilities */
-  .bg-dots-purple {
-    background-image: radial-gradient(circle, rgba(168, 107, 255, 0.2) 1px, transparent 1px);
-    background-size: 16px 16px;
-  }
-  
-  .bg-stripes-purple {
-    background: repeating-linear-gradient(
-      45deg,
-      rgba(168, 107, 255, 0.1),
-      rgba(168, 107, 255, 0.1) 10px,
-      rgba(168, 107, 255, 0.05) 10px,
-      rgba(168, 107, 255, 0.05) 20px
-    );
-  }
-  
-  .bg-grid-purple {
-    background-image: 
-      linear-gradient(rgba(168, 107, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(168, 107, 255, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-  
-  .bg-waves-purple {
-    background: linear-gradient(135deg, 
-      rgba(168, 107, 255, 0.15) 25%, 
-      transparent 25%) -10px 0,
-      linear-gradient(225deg, 
-      rgba(168, 107, 255, 0.15) 25%, 
-      transparent 25%) -10px 0,
-      linear-gradient(315deg, 
-      rgba(168, 107, 255, 0.15) 25%, 
-      transparent 25%),
-      linear-gradient(45deg, 
-      rgba(168, 107, 255, 0.15) 25%, 
-      transparent 25%);
-    background-size: 20px 20px;
-  }
-  
-  .bg-grain-purple {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15' fill='%23a855f7'/%3E%3C/svg%3E");
-  }
-  
-  .bg-hexagon-purple {
-    background-color: transparent;
-    background-image: 
-      radial-gradient(rgba(168, 107, 255, 0.2) 2px, transparent 2px),
-      radial-gradient(rgba(168, 107, 255, 0.15) 2px, transparent 2px);
-    background-size: 60px 60px;
-    background-position: 0 0, 30px 30px;
-  }
-  
-  .bg-circuit-purple {
-    background-image: 
-      linear-gradient(rgba(168, 107, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(168, 107, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(rgba(168, 107, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(168, 107, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
-    background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
-  }
-  
-  .bg-pulse-purple {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .bg-pulse-purple::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle, rgba(168, 107, 255, 0.2) 0%, transparent 70%);
-    opacity: 0;
-    animation: pattern-pulse 3s ease-in-out infinite;
-  }
-  
-  @keyframes pattern-pulse {
-    0%, 100% { opacity: 0; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1.2); }
-  }
-  
-  .bg-mesh-purple {
-    background: 
-      linear-gradient(rgba(168, 107, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(168, 107, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(135deg, rgba(168, 107, 255, 0.05) 2px, transparent 2px),
-      linear-gradient(45deg, rgba(168, 107, 255, 0.05) 2px, transparent 2px);
-    background-size: 40px 40px, 40px 40px, 20px 20px, 20px 20px;
-  }
-  
-  .border-pattern-purple {
-    position: relative;
-    z-index: 0;
-    border-radius: 0.6rem;
-  }
-  
-  .border-pattern-purple::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: -2px;
-    border-radius: 0.7rem;
-    background: repeating-linear-gradient(
-      45deg,
-      rgba(168, 107, 255, 0.5),
-      rgba(168, 107, 255, 0.5) 10px,
-      rgba(168, 107, 255, 0.3) 10px,
-      rgba(168, 107, 255, 0.3) 20px
-    );
-    opacity: 0.6;
+  .shadow-glow-intense {
+    box-shadow: 0 0 35px rgba(59, 130, 246, 0.35);
   }
 }

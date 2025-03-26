@@ -32,21 +32,22 @@ const Pricing = () => {
     <section
       id="pricing"
       ref={pricingRef}
-      className="py-16 md:py-20 bg-background"
+      className="py-16 md:py-20 bg-darkblue"
     >
-      <div className="container px-4 mx-auto">
+      <div className="responsive-container">
         <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
-          <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-accent-foreground bg-accent/10 rounded-full reveal-on-scroll border border-accent/30">
+          <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-300 bg-brand-900/40 rounded-full reveal-on-scroll border border-brand-700/50">
             Pricing Calculator
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-foreground text-balance reveal-on-scroll">
-            Calculate Your <span className="text-accent">ROI</span>
+          <h2 className="section-heading reveal-on-scroll">
+            Calculate Your <span className="text-gradient">ROI</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto reveal-on-scroll">
+          <p className="section-subheading reveal-on-scroll">
             Use our calculator to see how much your business could save with
             AI-powered call handling.
           </p>
         </div>
+
         <div className="reveal-on-scroll">
           <PricingCalculator />
         </div>

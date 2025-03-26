@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
@@ -21,6 +22,20 @@ const testimonials = [
     quote: "The call qualification feature has eliminated wasted trips. Our technicians now arrive at jobs knowing exactly what to expect.",
     author: "Jessica Williams",
     title: "CEO, Williams Electrical Contractors",
+    rating: 5
+  },
+  {
+    id: 4,
+    quote: "Our customer satisfaction scores increased by 28% since implementing PipelineGenerator. The voice agent handles basic inquiries perfectly, freeing our team for complex issues.",
+    author: "Robert Davis",
+    title: "Director, Davis Roofing & Exteriors",
+    rating: 4
+  },
+  {
+    id: 5,
+    quote: "The HouseCallPro integration works flawlessly. Appointments are automatically scheduled and our dispatch team loves the reduced workload.",
+    author: "Amanda Miller",
+    title: "Dispatcher, Miller's Restoration Services",
     rating: 5
   }
 ];
@@ -60,6 +75,7 @@ const Testimonials = () => {
     };
   }, []);
 
+  // Auto-advance testimonial
   useEffect(() => {
     const interval = setInterval(() => {
       showNext();
@@ -69,39 +85,39 @@ const Testimonials = () => {
   }, [activeIndex]);
 
   return (
-    <section id="testimonials" ref={testimonialsRef} className="py-20 bg-background">
+    <section id="testimonials" ref={testimonialsRef} className="py-20 bg-darkblue">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-primary bg-primary/10 rounded-full reveal-on-scroll border border-primary/30">
+          <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-100 bg-brand-700/30 rounded-full reveal-on-scroll">
             Success Stories
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-foreground text-balance reveal-on-scroll">
-            Trusted by <span className="text-primary">Home Service Leaders</span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-white text-balance reveal-on-scroll">
+            Trusted by <span className="text-gradient">Home Service Leaders</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto reveal-on-scroll">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto reveal-on-scroll">
             See how contractors, plumbers, HVAC companies and more are transforming their customer service with PipelineGenerator.
           </p>
         </div>
         
         <div className="relative max-w-4xl mx-auto">
-          <div className="bg-card rounded-xl p-8 sm:p-10 shadow-lg overflow-hidden reveal-on-scroll border border-border">
+          <div className="glass-card rounded-xl p-8 sm:p-10 shadow-elevated overflow-hidden reveal-on-scroll">
             <div className="flex flex-col items-center">
               <div className="flex mb-6">
                 {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-primary fill-current" />
+                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
                 {[...Array(5 - testimonials[activeIndex].rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-muted" />
+                  <Star key={i} className="w-5 h-5 text-gray-500" />
                 ))}
               </div>
               
-              <blockquote className="text-xl md:text-2xl font-display text-center mb-8 text-foreground text-balance">
+              <blockquote className="text-xl md:text-2xl font-display text-center mb-8 text-white text-balance">
                 "{testimonials[activeIndex].quote}"
               </blockquote>
               
               <div className="text-center">
-                <p className="font-semibold text-primary">{testimonials[activeIndex].author}</p>
-                <p className="text-sm text-muted-foreground">{testimonials[activeIndex].title}</p>
+                <p className="font-semibold text-brand-300">{testimonials[activeIndex].author}</p>
+                <p className="text-gray-400 text-sm">{testimonials[activeIndex].title}</p>
               </div>
             </div>
           </div>
@@ -112,7 +128,7 @@ const Testimonials = () => {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  index === activeIndex ? 'bg-primary' : 'bg-muted'
+                  index === activeIndex ? 'bg-brand-600' : 'bg-gray-600'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -121,7 +137,7 @@ const Testimonials = () => {
           
           <button
             onClick={showPrevious}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-background/40 text-foreground rounded-full p-2 shadow-lg hover:bg-accent transition-all focus:outline-none"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-black/40 text-white rounded-full p-2 shadow-subtle hover:bg-black/60 transition-all focus:outline-none"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -129,12 +145,14 @@ const Testimonials = () => {
           
           <button
             onClick={showNext}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-background/40 text-foreground rounded-full p-2 shadow-lg hover:bg-accent transition-all focus:outline-none"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-black/40 text-white rounded-full p-2 shadow-subtle hover:bg-black/60 transition-all focus:outline-none"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
+        
+        
       </div>
     </section>
   );
