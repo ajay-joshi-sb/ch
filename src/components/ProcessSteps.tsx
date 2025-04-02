@@ -32,7 +32,7 @@ const ProcessSteps = () => {
             How Our Inbound Voice Agent Works
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Getting started with PipelineGenerator is simple. Our AI-powered voice agents help your home service or franchise business convert more calls with less effort.
+            Getting started with Pipeline Generator is simple. Our AI-powered voice agents help your home service or franchise business convert more calls with less effort.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ const ProcessSteps = () => {
           <Step 
             number="2"
             title="Fast Integration (24-48 hours)"
-            description="We'll connect PipelineGenerator with your scheduling software like HouseCallPro, ServiceTitan, or Jobber for seamless operations."
+            description="We'll connect Pipeline Generator with your scheduling software like HouseCallPro, ServiceTitan, or Jobber for seamless operations."
             icon={<Laptop className="h-6 w-6 text-brand-500" />}
           />
           

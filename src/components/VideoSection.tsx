@@ -1,10 +1,11 @@
-
-import { useEffect, useRef } from 'react';
-import { PlayCircle, CheckCircle } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { PlayCircle, CheckCircle, X } from 'lucide-react';
 import CTAButton from './CTAButton';
 
 const VideoSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,13 +31,17 @@ const VideoSection = () => {
   }, []);
 
   const openVideo = () => {
-    // Replace with actual video URL when available
-    const videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
-    window.open(videoUrl, '_blank');
+    setIsVideoPlaying(true);
+    videoRef.current?.play();
+  };
+
+  const closeVideo = () => {
+    setIsVideoPlaying(false);
+    videoRef.current?.pause();
   };
 
   return (
-    <section id="video" ref={sectionRef} className="py-20 bg-gradient-to-b from-darkblue to-black/90">
+    <section id="video" ref={sectionRef} className="w-full bg-gradient-to-b from-[#282850] to-[#323264] text-white py-20 relative overflow-hidden">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-300 bg-brand-900/40 rounded-full reveal-on-scroll border border-brand-700/50">
@@ -51,71 +56,46 @@ const VideoSection = () => {
         </div>
         
         <div className="max-w-4xl mx-auto reveal-on-scroll">
-          <div className="relative aspect-video rounded-xl overflow-hidden bg-black/40 border border-brand-700/50 group">
-            {/* Video thumbnail - replace with actual thumbnail when available */}
-            <div 
-              className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/70 flex items-center justify-center cursor-pointer group-hover:from-black/30 group-hover:to-black/80 transition-all duration-300"
-              onClick={openVideo}
-            >
-              <div className="transform transition-all duration-300 group-hover:scale-110">
-                <PlayCircle className="w-20 h-20 text-brand-500 opacity-90 group-hover:opacity-100" />
-                <span className="block mt-4 text-white font-medium">Watch Demo Video</span>
+          <div className="relative aspect-video rounded-xl overflow-hidden bg-black/30 border border-brand-700/50 group">
+            {isVideoPlaying ? (
+              <div className="absolute inset-0 z-50">
+                <button 
+                  onClick={closeVideo} 
+                  className="absolute top-4 right-4 text-white z-60 hover:text-brand-500 transition-colors"
+                >
+                  <X className="w-8 h-8" />
+                </button>
+                <video
+                  ref={videoRef}
+                  src="https://storage.googleapis.com/pipeline-generator-website-data/Consistent%20Call%20Center%20Experience.mp4"
+                  className="absolute inset-0 w-full h-full object-contain"
+                  poster="/thumbnail_1.png"
+                  controls
+                  autoPlay
+                  preload="metadata"
+                ></video>
               </div>
-            </div>
-            
-            <img 
-              src="https://images.unsplash.com/photo-1599971437030-00b0fc3025cb?q=80&w=1000&auto=format&fit=crop" 
-              alt="AI Voice Agent Demo"
-              className="w-full h-full object-cover"
-            />
+            ) : (
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer group-hover:from-black/30 group-hover:to-black/80 transition-all duration-300"
+                onClick={openVideo}
+              >
+                <div className="transform transition-all duration-300 group-hover:scale-110 text-center">
+                  <PlayCircle className="w-20 h-20 text-brand-500 opacity-90 group-hover:opacity-100 mx-auto" />
+                  <span className="block mt-4 text-white font-medium text-center">
+                    Watch Demo Video
+                  </span>
+                </div>
+                
+                <img 
+                  src="/thumbnail_1.png" 
+                  alt="AI Voice Agent Demo"
+                  className="absolute inset-0 w-full h-full object-cover -z-10"
+                />
+              </div>
+            )}
           </div>
           
-          {/* <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            <div className="bg-black/20 p-6 rounded-lg border border-brand-700/50">
-              <h3 className="text-xl font-semibold text-white mb-4">How It Works</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Our AI answers calls immediately, 24/7</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Understands customer needs through natural conversation</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Qualifies leads by asking relevant questions</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Books appointments directly into your scheduling system</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div className="bg-black/20 p-6 rounded-lg border border-brand-700/50">
-              <h3 className="text-xl font-semibold text-white mb-4">Business Benefits</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Never miss another opportunity, even after hours</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Reduce overhead costs for call handling</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Increase conversion rates by 35% on average</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-brand-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-300">Get detailed insights from every call</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-           */}
           <div className="mt-10 text-center">
             <CTAButton 
               variant="primary" 

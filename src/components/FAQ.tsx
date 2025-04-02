@@ -45,8 +45,8 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "How does the PipelineGenerator voice agent work?",
-      answer: "PipelineGenerator's AI voice agent answers your inbound calls 24/7, using natural language processing to understand customer inquiries, qualify leads, and book appointments directly in your scheduling system. It integrates with your existing CRM or field service software like HouseCallPro, ServiceTitan, or Jobber to ensure seamless operation."
+      question: "How does the Pipeline Generator voice agent work?",
+      answer: "Pipeline Generator's AI voice agent answers your inbound calls 24/7, using natural language processing to understand customer inquiries, qualify leads, and book appointments directly in your scheduling system. It integrates with your existing CRM or field service software like HouseCallPro, ServiceTitan, or Jobber to ensure seamless operation."
     },
     {
       question: "Can the voice agent handle complex customer requests?",
@@ -57,8 +57,8 @@ const FAQ = () => {
       answer: "We believe in transparency, so the voice agent identifies itself as an AI assistant. However, our voice technology is so natural that many customers report forgetting they're speaking with an AI. The experience is designed to be helpful and conversational, not robotic."
     },
     {
-      question: "How does PipelineGenerator integrate with my existing software?",
-      answer: "PipelineGenerator has built-in integrations with popular home service platforms including HouseCallPro, ServiceTitan, Jobber, Acculynx, Calendly, Google Calendar, and CallRail. Our team handles the setup process with you, ensuring data flows seamlessly between systems. We also offer custom API integrations for enterprise clients."
+      question: "How does Pipeline Generator integrate with my existing software?",
+      answer: "Pipeline Generator has built-in integrations with popular home service platforms including HouseCallPro, ServiceTitan, Jobber, Acculynx, Calendly, Google Calendar, and CallRail. Our team handles the setup process with you, ensuring data flows seamlessly between systems. We also offer custom API integrations for enterprise clients."
     },
     {
       question: "How quickly can I get up and running?",
@@ -73,13 +73,13 @@ const FAQ = () => {
       answer: "Absolutely! You can customize the script, greeting, questions asked for qualification, service offerings, pricing discussions, and more. Enterprise plans include fully branded voice experiences tailored to your company's tone and style."
     },
     {
-      question: "How do I measure the ROI of using PipelineGenerator?",
+      question: "How do I measure the ROI of using Pipeline Generator?",
       answer: "Our dashboard provides comprehensive analytics on call volume, conversion rates, appointment bookings, and lead qualification. You'll see exactly how many calls would have been missed otherwise, how many appointments were booked, and the estimated revenue value based on your average ticket value."
     }
   ];
 
   return (
-    <section id="faq" className="py-20 bg-darkblue">
+    <section id="faq" className="w-full bg-gradient-to-br from-[#0C1955] via-[#0D1C5F] to-[#0E1D65] py-12 rounded-lg border border-slate-800/40 shadow-xl">
       <div className="container px-4 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-100 bg-brand-700/30 rounded-full reveal-on-scroll">
@@ -89,7 +89,7 @@ const FAQ = () => {
             Frequently Asked <span className="text-gradient">Questions</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto reveal-on-scroll">
-            Everything you need to know about PipelineGenerator's AI voice agents for your home service business
+            Everything you need to know about Pipeline Generator's AI voice agents for your home service business
           </p>
         </div>
 

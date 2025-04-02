@@ -54,7 +54,7 @@ const Features = () => {
     <section
       id="features"
       ref={featuresRef}
-      className="py-16 bg-darkblue relative overflow-hidden"
+      className="w-full bg-gradient-to-b from-[#1e1e3c] to-[#282850] text-white py-20 relative overflow-hidden"
     >
       {/* Enhanced background effects */}
       <div className="absolute top-0 left-1/3 w-80 h-80 bg-brand-500/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
@@ -134,7 +134,7 @@ const Features = () => {
             Ready to Convert More Calls?
           </h3>
           <a
-            href="https://calendly.com/vipul-smaartbotics/30min"
+            href="https://calendly.com/pipeline-generator/inbound"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -149,7 +149,7 @@ const Features = () => {
           </a>
 
           <p className="text-xs text-brand-300 mt-4 opacity-80">
-            No commitment required • 15-minute setup
+            No commitment required • 30-minute setup
           </p>
         </div>
       </div>

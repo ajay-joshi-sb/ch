@@ -32,7 +32,7 @@ const Pricing = () => {
     <section
       id="pricing"
       ref={pricingRef}
-      className="py-16 md:py-20 bg-darkblue"
+      className="w-full bg-gradient-to-b from-[#3c3c78] to-[#464696] text-white py-16 relative overflow-hidden"
     >
       <div className="responsive-container">
         <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">

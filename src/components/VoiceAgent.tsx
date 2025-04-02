@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 
 const ServiceCallOpportunity = () => {
   const [mobileNumber, setMobileNumber] = useState("");
-  const [countryCode, setCountryCode] = useState("+1"); // Default country code
+  const [countryCode, setCountryCode] = useState("+1"); // Default to +1
+  const [selectedCountry, setSelectedCountry] = useState("United States");
+  const [selectedFlag, setSelectedFlag] = useState("🇺🇸"); // Store the selected flag
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -10,103 +12,78 @@ const ServiceCallOpportunity = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [filteredCountries, setFilteredCountries] = useState([]);
 
-  // Comprehensive list of country codes
+  // Updated list of country codes with flags - using only the code as identifier
   const countryCodes = [
-    { code: "+1", country: "United States" },
-    { code: "+1", country: "Canada" },
-    { code: "+7", country: "Russia" },
-    { code: "+20", country: "Egypt" },
-    { code: "+27", country: "South Africa" },
-    { code: "+30", country: "Greece" },
-    { code: "+31", country: "Netherlands" },
-    { code: "+32", country: "Belgium" },
-    { code: "+33", country: "France" },
-    { code: "+34", country: "Spain" },
-    { code: "+36", country: "Hungary" },
-    { code: "+39", country: "Italy" },
-    { code: "+40", country: "Romania" },
-    { code: "+41", country: "Switzerland" },
-    { code: "+43", country: "Austria" },
-    { code: "+44", country: "United Kingdom" },
-    { code: "+45", country: "Denmark" },
-    { code: "+46", country: "Sweden" },
-    { code: "+47", country: "Norway" },
-    { code: "+48", country: "Poland" },
-    { code: "+49", country: "Germany" },
-    { code: "+51", country: "Peru" },
-    { code: "+52", country: "Mexico" },
-    { code: "+54", country: "Argentina" },
-    { code: "+55", country: "Brazil" },
-    { code: "+56", country: "Chile" },
-    { code: "+57", country: "Colombia" },
-    { code: "+58", country: "Venezuela" },
-    { code: "+60", country: "Malaysia" },
-    { code: "+61", country: "Australia" },
-    { code: "+62", country: "Indonesia" },
-    { code: "+63", country: "Philippines" },
-    { code: "+64", country: "New Zealand" },
-    { code: "+65", country: "Singapore" },
-    { code: "+66", country: "Thailand" },
-    { code: "+81", country: "Japan" },
-    { code: "+82", country: "South Korea" },
-    { code: "+84", country: "Vietnam" },
-    { code: "+86", country: "China" },
-    { code: "+90", country: "Turkey" },
-    { code: "+91", country: "India" },
-    { code: "+92", country: "Pakistan" },
-    { code: "+93", country: "Afghanistan" },
-    { code: "+94", country: "Sri Lanka" },
-    { code: "+95", country: "Myanmar" },
-    { code: "+98", country: "Iran" },
-    { code: "+212", country: "Morocco" },
-    { code: "+213", country: "Algeria" },
-    { code: "+216", country: "Tunisia" },
-    { code: "+218", country: "Libya" },
-    { code: "+220", country: "Gambia" },
-    { code: "+221", country: "Senegal" },
-    { code: "+222", country: "Mauritania" },
-    { code: "+223", country: "Mali" },
-    { code: "+234", country: "Nigeria" },
-    { code: "+254", country: "Kenya" },
-    { code: "+255", country: "Tanzania" },
-    { code: "+256", country: "Uganda" },
-    { code: "+260", country: "Zambia" },
-    { code: "+263", country: "Zimbabwe" },
-    { code: "+351", country: "Portugal" },
-    { code: "+352", country: "Luxembourg" },
-    { code: "+353", country: "Ireland" },
-    { code: "+358", country: "Finland" },
-    { code: "+359", country: "Bulgaria" },
-    { code: "+370", country: "Lithuania" },
-    { code: "+371", country: "Latvia" },
-    { code: "+372", country: "Estonia" },
-    { code: "+380", country: "Ukraine" },
-    { code: "+420", country: "Czech Republic" },
-    { code: "+421", country: "Slovakia" },
-    { code: "+880", country: "Bangladesh" },
-    { code: "+886", country: "Taiwan" },
-    { code: "+960", country: "Maldives" },
-    { code: "+961", country: "Lebanon" },
-    { code: "+962", country: "Jordan" },
-    { code: "+963", country: "Syria" },
-    { code: "+964", country: "Iraq" },
-    { code: "+965", country: "Kuwait" },
-    { code: "+966", country: "Saudi Arabia" },
-    { code: "+967", country: "Yemen" },
-    { code: "+968", country: "Oman" },
-    { code: "+970", country: "Palestine" },
-    { code: "+971", country: "United Arab Emirates" },
-    { code: "+972", country: "Israel" },
-    { code: "+973", country: "Bahrain" },
-    { code: "+974", country: "Qatar" },
-    { code: "+975", country: "Bhutan" },
-    { code: "+976", country: "Mongolia" },
-    { code: "+977", country: "Nepal" },
-    { code: "+992", country: "Tajikistan" },
-    { code: "+993", country: "Turkmenistan" },
-    { code: "+994", country: "Azerbaijan" },
-    { code: "+995", country: "Georgia" },
-    { code: "+998", country: "Uzbekistan" },
+    { code: "+1", country: "United States", flag: "🇺🇸" },
+    { code: "+1", country: "Canada", flag: "🇨🇦" },
+    { code: "+20", country: "Egypt", flag: "🇪🇬" },
+    { code: "+27", country: "South Africa", flag: "🇿🇦" },
+    { code: "+30", country: "Greece", flag: "🇬🇷" },
+    { code: "+31", country: "Netherlands", flag: "🇳🇱" },
+    { code: "+32", country: "Belgium", flag: "🇧🇪" },
+    { code: "+33", country: "France", flag: "🇫🇷" },
+    { code: "+34", country: "Spain", flag: "🇪🇸" },
+    { code: "+36", country: "Hungary", flag: "🇭🇺" },
+    { code: "+39", country: "Italy", flag: "🇮🇹" },
+    { code: "+40", country: "Romania", flag: "🇷🇴" },
+    { code: "+41", country: "Switzerland", flag: "🇨🇭" },
+    { code: "+43", country: "Austria", flag: "🇦🇹" },
+    { code: "+44", country: "United Kingdom", flag: "🇬🇧" },
+    { code: "+45", country: "Denmark", flag: "🇩🇰" },
+    { code: "+46", country: "Sweden", flag: "🇸🇪" },
+    { code: "+47", country: "Norway", flag: "🇳🇴" },
+    { code: "+48", country: "Poland", flag: "🇵🇱" },
+    { code: "+49", country: "Germany", flag: "🇩🇪" },
+    { code: "+51", country: "Peru", flag: "🇵🇪" },
+    { code: "+52", country: "Mexico", flag: "🇲🇽" },
+    { code: "+53", country: "Cuba", flag: "🇨🇺" },
+    { code: "+54", country: "Argentina", flag: "🇦🇷" },
+    { code: "+55", country: "Brazil", flag: "🇧🇷" },
+    { code: "+56", country: "Chile", flag: "🇨🇱" },
+    { code: "+57", country: "Colombia", flag: "🇨🇴" },
+    { code: "+58", country: "Venezuela", flag: "🇻🇪" },
+    { code: "+60", country: "Malaysia", flag: "🇲🇾" },
+    { code: "+61", country: "Australia", flag: "🇦🇺" },
+    { code: "+62", country: "Indonesia", flag: "🇮🇩" },
+    { code: "+63", country: "Philippines", flag: "🇵🇭" },
+    { code: "+64", country: "New Zealand", flag: "🇳🇿" },
+    { code: "+65", country: "Singapore", flag: "🇸🇬" },
+    { code: "+66", country: "Thailand", flag: "🇹🇭" },
+    { code: "+81", country: "Japan", flag: "🇯🇵" },
+    { code: "+82", country: "South Korea", flag: "🇰🇷" },
+    { code: "+84", country: "Vietnam", flag: "🇻🇳" },
+    { code: "+86", country: "China", flag: "🇨🇳" },
+    { code: "+90", country: "Turkey", flag: "🇹🇷" },
+    { code: "+91", country: "India", flag: "🇮🇳" },
+    { code: "+92", country: "Pakistan", flag: "🇵🇰" },
+    { code: "+93", country: "Afghanistan", flag: "🇦🇫" },
+    { code: "+94", country: "Sri Lanka", flag: "🇱🇰" },
+    { code: "+95", country: "Myanmar", flag: "🇲🇲" },
+    { code: "+98", country: "Iran", flag: "🇮🇷" },
+    { code: "+211", country: "South Sudan", flag: "🇸🇸" },
+    { code: "+212", country: "Morocco", flag: "🇲🇦" },
+    { code: "+213", country: "Algeria", flag: "🇩🇿" },
+    { code: "+216", country: "Tunisia", flag: "🇹🇳" },
+    { code: "+218", country: "Libya", flag: "🇱🇾" },
+    { code: "+220", country: "Gambia", flag: "🇬🇲" },
+    { code: "+221", country: "Senegal", flag: "🇸🇳" },
+    { code: "+225", country: "Ivory Coast", flag: "🇨🇮" },
+    { code: "+233", country: "Ghana", flag: "🇬🇭" },
+    { code: "+234", country: "Nigeria", flag: "🇳🇬" },
+    { code: "+237", country: "Cameroon", flag: "🇨🇲" },
+    { code: "+242", country: "Congo", flag: "🇨🇬" },
+    { code: "+248", country: "Seychelles", flag: "🇸🇨" },
+    { code: "+249", country: "Sudan", flag: "🇸🇩" },
+    { code: "+250", country: "Rwanda", flag: "🇷🇼" },
+    { code: "+251", country: "Ethiopia", flag: "🇪🇹" },
+    { code: "+254", country: "Kenya", flag: "🇰🇪" },
+    { code: "+255", country: "Tanzania", flag: "🇹🇿" },
+    { code: "+256", country: "Uganda", flag: "🇺🇬" },
+    { code: "+260", country: "Zambia", flag: "🇿🇲" },
+    { code: "+263", country: "Zimbabwe", flag: "🇿🇼" },
+    { code: "+298", country: "Faroe Islands", flag: "🇫🇴" },
+    { code: "+350", country: "Gibraltar", flag: "🇬🇮" },
+    { code: "+351", country: "Portugal", flag: "🇵🇹" }
   ];
 
   // Filter countries based on search term
@@ -144,25 +121,23 @@ const ServiceCallOpportunity = () => {
 
   // Phone number validation function
   const isValidPhoneNumber = (number) => {
-    // Check if it's exactly 10 digits (excluding country code)
     return /^\d{10}$/.test(number);
   };
 
   // Handle phone number input
   const handlePhoneInput = (e) => {
-    const input = e.target.value.replace(/\D/g, ''); // Remove non-digits
-    
-    // Limit to 10 digits
+    const input = e.target.value.replace(/\D/g, '');
     const limitedInput = input.slice(0, 10);
     setMobileNumber(limitedInput);
     
-    // Clear any previous errors when user edits
     if (error) setError("");
   };
 
-  // Handle country code selection
-  const selectCountryCode = (code, country) => {
+  // Updated country code selection handler that also stores the flag
+  const selectCountryCode = (code, country, flag) => {
     setCountryCode(code);
+    setSelectedCountry(country);
+    setSelectedFlag(flag);
     setShowDropdown(false);
     setSearchTerm("");
     if (error) setError("");
@@ -171,7 +146,6 @@ const ServiceCallOpportunity = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validate phone number
     if (!mobileNumber) {
       setError("Please enter a phone number");
       return;
@@ -182,14 +156,13 @@ const ServiceCallOpportunity = () => {
       return;
     }
     
-    // Combine country code and phone number
+    // Use the code for submission
     const formattedNumber = `${countryCode}${mobileNumber}`;
 
     setIsSubmitting(true);
     setError("");
 
     try {
-      // Make the API call to the specified endpoint
       const response = await fetch('https://us-central1-aiagents-7777.cloudfunctions.net/lead_contact_now_retellai', {
         method: 'POST',
         headers: {
@@ -199,9 +172,8 @@ const ServiceCallOpportunity = () => {
           service: "pipelinegenerator",
           contact_number: formattedNumber
         }),
-        
       });
-      console.log(response)
+      
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -209,11 +181,9 @@ const ServiceCallOpportunity = () => {
       const data = await response.json();
       console.log("Call initiated:", data);
       
-      // Show success state
       setSubmitted(true);
       setMobileNumber("");
       
-      // Reset after 3 seconds
       setTimeout(() => {
         setSubmitted(false);
         setIsSubmitting(false);
@@ -225,15 +195,30 @@ const ServiceCallOpportunity = () => {
     }
   };
 
-  // Check if the form can be submitted
   const isFormValid = mobileNumber.length === 10 && countryCode;
 
+  // Function to group countries by code for the dropdown display
+  const groupCountriesByCode = (countries) => {
+    const grouped = {};
+    
+    countries.forEach(country => {
+      if (!grouped[country.code]) {
+        grouped[country.code] = [];
+      }
+      grouped[country.code].push(country);
+    });
+    
+    // Flatten the grouped countries for display
+    return Object.values(grouped).flat();
+  };
+
   return (
-    <div className="w-full bg-gradient-to-b from-[#0c1a34] to-[#0a1425] text-white pt-16">
+  <div className="w-full bg-gradient-to-b from-white to-gray-100 text-gray-800 py-16 relative overflow-hidden">
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-10 lg:mb-12 pt-8">
-          <div className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-300 bg-brand-900/40 rounded-full reveal-on-scroll border border-brand-700/50">
+          <div className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-300 bg-brand-900/40 rounded-full border border-brand-700/50">
             AI-Powered Voice Agents for Home Service & Franchise Businesses
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-3 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent leading-tight">
@@ -247,49 +232,18 @@ const ServiceCallOpportunity = () => {
         {/* Phone Section */}
         <div className="flex justify-center mb-0">
           <div className="relative">
-            {/* Phone device frame with brighter colors */}
             <div className="relative w-72 sm:w-80 md:w-96 h-[480px] rounded-t-[3rem] rounded-b-none bg-[#1a1a1a] shadow-[0_0_60px_rgba(59,130,246,0.4)] overflow-hidden transition-all hover:scale-[1.02] duration-500">
-              {/* Improved bottom fade overlay - more gradual fade */}
-              <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#0a1425] via-[#0a1425]/60 to-transparent z-20 pointer-events-none"></div>
-              
-              {/* Enhanced light reflection overlay for realism */}
-              <div className="absolute top-0 left-0 right-0 h-1/4 bg-gradient-to-b from-white/10 to-transparent pointer-events-none z-20"></div>
-
-              {/* Improved Phone bezel with flat bottom */}
-              <div className="absolute inset-0 rounded-t-[3rem] rounded-b-none border-[12px] border-b-[10px] border-[#111111] pointer-events-none shadow-inner">
-                {/* Inner bezel highlight for realism */}
-                <div className="absolute inset-[-1px] rounded-t-[2.7rem] rounded-b-none border border-white/10 pointer-events-none"></div>
-              </div>
-
-              {/* Improved Side buttons with highlights */}
-              <div className="absolute right-[-2px] top-28 w-[4px] h-12 bg-[#0a0a0a] rounded-l-md shadow-inner">
-                <div className="absolute inset-y-0 left-0 w-[1px] bg-white/10"></div>
-              </div>
-              <div className="absolute left-[-2px] top-24 w-[4px] h-8 bg-[#0a0a0a] rounded-r-md shadow-inner">
-                <div className="absolute inset-y-0 right-0 w-[1px] bg-white/10"></div>
-              </div>
-              <div className="absolute left-[-2px] top-36 w-[4px] h-8 bg-[#0a0a0a] rounded-r-md shadow-inner">
-                <div className="absolute inset-y-0 right-0 w-[1px] bg-white/10"></div>
-              </div>
-
-              {/* Phone screen content with brighter background */}
-              <div className="absolute inset-0 rounded-t-[2.75rem] rounded-b-none bg-gradient-to-bl from-[#1a3156] to-[#0e1d36] overflow-hidden">
-                {/* Improved Black notch with subtle details */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-8 bg-black rounded-b-2xl z-10 flex items-center justify-center shadow-md">
-                  {/* Subtle camera element */}
+              <div className="absolute inset-0 rounded-t-[3rem] rounded-b-none bg-gradient-to-bl from-[#1a3156] to-[#0e1d36] overflow-hidden">
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-8 bg-black rounded-b-2xl z-10 flex items-center justify-center">
                   <div className="w-2 h-2 rounded-full bg-black border border-gray-800 mr-10 shadow-inner overflow-hidden">
                     <div className="w-1 h-1 rounded-full bg-gray-700/30 absolute top-0.5 left-0.5"></div>
                   </div>
                 </div>
 
-                {/* Enhanced Screen overlays for realism with brighter highlights */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
-                <div className="absolute top-0 right-0 w-1/3 h-1/4 bg-gradient-to-bl from-blue-400/20 to-transparent pointer-events-none rounded-bl-full"></div>
-                <div className="absolute bottom-0 left-0 w-1/2 h-1/3 bg-gradient-to-tr from-black/20 to-transparent pointer-events-none"></div>
-
                 {/* Main content container */}
                 <div className="pt-12 px-6 h-full flex flex-col">
-                  {/* Status bar with better spacing for visible icons */}
+                  {/* Status bar */}
                   <div className="absolute top-2 w-full flex justify-between px-7 text-xs text-white/90">
                     <div>10:42</div>
                     <div className="flex space-x-2 items-center mr-10">
@@ -309,7 +263,7 @@ const ServiceCallOpportunity = () => {
                     </div>
                   </div>
 
-                  {/* Top bar - brighter colors */}
+                  {/* Top bar */}
                   <div className="flex justify-between items-center mb-5 px-2 mt-4">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
@@ -373,12 +327,8 @@ const ServiceCallOpportunity = () => {
                     </div>
                   </div>
 
-                  {/* Form container with enhanced brighter glass effect */}
-                  <div className="bg-gradient-to-b from-[#214070]/90 to-[#102040]/90 rounded-2xl p-5 shadow-lg border border-blue-500/30 backdrop-blur-sm flex-1 flex flex-col mt-2 relative overflow-hidden">
-                    {/* Glass reflections - brighter */}
-                    <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
-                    <div className="absolute -right-12 -top-12 w-24 h-24 bg-blue-400/20 blur-xl rounded-full pointer-events-none"></div>
-                    
+                  {/* Form container */}
+                  <div className="bg-[#214070]/90 rounded-2xl p-5 shadow-lg border border-blue-500/30 flex-1 flex flex-col mt-2 relative overflow-hidden">
                     <div className="flex-1 flex flex-col justify-center relative z-10">
                       <h3 className="text-xl md:text-2xl font-semibold text-center mb-4">
                         Try it{" "}
@@ -388,20 +338,24 @@ const ServiceCallOpportunity = () => {
                       </h3>
 
                       <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* Country code selector and phone number input - brighter */}
                         <div className="relative">
                           <div className="flex flex-col space-y-2">
-                            {/* Country code selector with improved brightness */}
+                            {/* Country code selector */}
                             <div className="relative country-selector">
                               <div 
-                                className="flex items-center justify-between py-3 px-4 rounded-xl bg-white/15 backdrop-blur-sm border-2 border-blue-400/40 text-white focus:outline-none focus:border-blue-400/70 focus:ring-2 focus:ring-blue-400/30 transition-all shadow-inner cursor-pointer"
+                                className="flex items-center justify-between py-3 px-4 rounded-xl bg-white/15 border-2 border-blue-400/40 text-white focus:outline-none focus:border-blue-400/70 focus:ring-2 focus:ring-blue-400/30 transition-all cursor-pointer"
                                 onClick={() => setShowDropdown(!showDropdown)}
                               >
                                 <div className="flex items-center">
-                                  <div className="w-8 flex justify-center font-medium">{countryCode}</div>
-                                  <span className="ml-3 text-gray-200 truncate max-w-[150px]">
-                                    {countryCodes.find(c => c.code === countryCode)?.country}
-                                  </span>
+                                  <div className="mr-2 text-2xl">
+                                    {selectedFlag}
+                                  </div>
+                                  <div className="flex items-center">
+                                    <div className="w-8 flex justify-center font-medium">{countryCode}</div>
+                                    <span className="ml-3 text-gray-200 truncate max-w-[150px]">
+                                      {selectedCountry}
+                                    </span>
+                                  </div>
                                 </div>
                                 <svg 
                                   xmlns="http://www.w3.org/2000/svg" 
@@ -414,7 +368,7 @@ const ServiceCallOpportunity = () => {
                                 </svg>
                               </div>
                               
-                              {/* Country dropdown with brighter styling */}
+                              {/* Country dropdown */}
                               {showDropdown && (
                                 <div className="absolute z-30 mt-1 w-full rounded-xl bg-[#102040] border-2 border-blue-400/40 shadow-xl max-h-60 overflow-y-auto">
                                   <div className="sticky top-0 bg-[#102040] border-b border-blue-400/40 p-2 z-10">
@@ -442,11 +396,12 @@ const ServiceCallOpportunity = () => {
                                       <div
                                         key={index}
                                         className="px-4 py-2 hover:bg-blue-500/30 cursor-pointer flex justify-between items-center transition-colors"
-                                        onClick={() => selectCountryCode(country.code, country.country)}
+                                        onClick={() => selectCountryCode(country.code, country.country, country.flag)}
                                       >
                                         <div className="flex items-center">
+                                          <span className="mr-2 text-xl">{country.flag}</span>
                                           <span className="text-white truncate">{country.country}</span>
-                                          {countryCode === country.code && (
+                                          {countryCode === country.code && selectedCountry === country.country && (
                                             <svg 
                                               xmlns="http://www.w3.org/2000/svg" 
                                               className="h-4 w-4 text-blue-300 ml-2" 
@@ -468,11 +423,11 @@ const ServiceCallOpportunity = () => {
                               )}
                             </div>
                             
-                            {/* Phone number input - enhanced brighter styling */}
+                            {/* Phone number input */}
                             <input
                               type="tel"
                               placeholder="Enter 10-digit phone number"
-                              className="w-full py-3 px-4 rounded-xl bg-white/15 backdrop-blur-sm border-2 border-blue-400/40 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400/60 focus:ring-2 focus:ring-blue-400/30 transition-all shadow-inner"
+                              className="w-full py-3 px-4 rounded-xl bg-white/15 border-2 border-blue-400/40 text-white placeholder-gray-300 focus:outline-none focus:border-blue-400/60 focus:ring-2 focus:ring-blue-400/30 transition-all"
                               value={mobileNumber}
                               onChange={handlePhoneInput}
                               disabled={isSubmitting || submitted}
@@ -505,7 +460,7 @@ const ServiceCallOpportunity = () => {
                           )}
                         </div>
                         
-                        {/* Enhanced button with brighter colors */}
+                        {/* Submit button */}
                         <button
                           type="submit"
                           disabled={isSubmitting || submitted || !isFormValid}
@@ -526,47 +481,72 @@ const ServiceCallOpportunity = () => {
                         </button>
                       </form>
                     </div>
-                    
-                    {/* Reduced space at bottom */}
-                    <div className="h-10"></div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Reduced multi-layer fade-out effect with shorter height */}
-            <div className="relative h-16 w-full">
-              <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-t from-[#0a1425]/80 to-[#0a1425]/10"></div>
-              <div className="absolute top-8 left-0 right-0 h-8 bg-[#0a1425]"></div>
+        <div className="mt-0">
+        {/* CTA Section */}
+        <div className="mt-12 text-center  py-12">
+          <div className="max-w-md mx-auto px-4">
+            <div className="text-center mb-6">
+              <h2 className="text-3xl font-bold text-white mb-4">
+                Ready to Convert More Calls?
+              </h2>
+            </div>
+            <div className="inline-block">
+            <a 
+                  href="https://calendly.com/pipeline-generator/inbound"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors flex items-center space-x-2 group"
+                >
+                  <span>Book A Demo Today</span>
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-5 w-5 transition-transform group-hover:translate-x-1" 
+                    viewBox="0 0 20 20" 
+                    fill="currentColor"
+                  >
+                    <path 
+                      fillRule="evenodd" 
+                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
+                      clipRule="evenodd" 
+                    />
+                  </svg>
+                </a>
+              <div className="text-gray-400 text-sm mt-2">
+                No commitment required • 30-minute setup
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Stats Section - Enhanced with subtle animations */}
-        <div className="mt-0">
-          <h3 className="text-center text-2xl md:text-3xl font-bold mb-6 text-white">
-            Trusted by 850+ Businesses Worldwide
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {[
-              { value: "+2,890,000$", label: "New Revenue Generated" },
-              { value: "+3,400", label: "Qualified Meetings Booked" },
-              { value: "+25M$", label: "Sales Pipeline Created" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="bg-blue-800/40 border border-blue-700/30 rounded-2xl p-6 transform transition-all hover:scale-[1.03] hover:shadow-blue-700/10 hover:shadow-lg duration-300"
-              >
-                <div className="text-3xl md:text-4xl font-bold mb-2 text-white">
-                  {stat.value}
-                </div>
-                <div className="text-blue-200 text-sm md:text-base">
-                  {stat.label}
-                </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          {[
+            { value: "+2,890,000$", label: "New Revenue Generated" },
+            { value: "+3,400", label: "Qualified Meetings Booked" },
+            { value: "+25M$", label: "Sales Pipeline Created" },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="bg-blue-800/40 border border-blue-700/30 rounded-2xl p-6 transform transition-all hover:scale-[1.03] hover:shadow-blue-700/10 hover:shadow-lg duration-300"
+            >
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-white">
+                {stat.value}
               </div>
-            ))}
-          </div>
+              <div className="text-blue-200 text-sm md:text-base">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
       </div>
 
       {/* Enhanced Animations */}

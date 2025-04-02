@@ -40,7 +40,7 @@ const Index = () => {
       <VoiceAgent />
       <VoiceDemo />
       <Features />
-      {/* <VideoSection /> */}
+      <VideoSection />
       <Testimonials />
       <Pricing />
       <FAQ />

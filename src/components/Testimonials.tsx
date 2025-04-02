@@ -5,37 +5,16 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
-    quote: "PipelineGenerator's AI voice agent has improved our customer response time by 80% and increased booked appointments by 35% within two months.",
-    author: "Sarah Johnson",
-    title: "Owner, Johnson Plumbing Services",
+    quote: "Another booking for Location 105! It was smooth. Even when the customer asked about foundation repair, the response was perfect!",
+    author: "Alicia B",
+    title: "Franchise Call Center Operations Manager",
     rating: 5
   },
   {
     id: 2,
-    quote: "Their seamless integration with ServiceTitan has transformed how we handle after-hours calls. We never miss a lead now, even at 2 AM.",
-    author: "Michael Chen",
-    title: "Operations Manager, Chen HVAC Solutions",
-    rating: 5
-  },
-  {
-    id: 3,
-    quote: "The call qualification feature has eliminated wasted trips. Our technicians now arrive at jobs knowing exactly what to expect.",
-    author: "Jessica Williams",
-    title: "CEO, Williams Electrical Contractors",
-    rating: 5
-  },
-  {
-    id: 4,
-    quote: "Our customer satisfaction scores increased by 28% since implementing PipelineGenerator. The voice agent handles basic inquiries perfectly, freeing our team for complex issues.",
-    author: "Robert Davis",
-    title: "Director, Davis Roofing & Exteriors",
-    rating: 4
-  },
-  {
-    id: 5,
-    quote: "The HouseCallPro integration works flawlessly. Appointments are automatically scheduled and our dispatch team loves the reduced workload.",
-    author: "Amanda Miller",
-    title: "Dispatcher, Miller's Restoration Services",
+    quote: "We got our first 2 bookings already! Cool thing that the tracking changes we working too. Good stuff guys!",
+    author: "Eric K",
+    title: "Founder & Owner",
     rating: 5
   }
 ];
@@ -85,7 +64,7 @@ const Testimonials = () => {
   }, [activeIndex]);
 
   return (
-    <section id="testimonials" ref={testimonialsRef} className="py-20 bg-darkblue">
+    <section id="testimonials" ref={testimonialsRef} className="w-full bg-gradient-to-b from-[#323264] to-[#3c3c78] text-white py-20 relative overflow-hidden">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <span className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-100 bg-brand-700/30 rounded-full reveal-on-scroll">
@@ -95,7 +74,7 @@ const Testimonials = () => {
             Trusted by <span className="text-gradient">Home Service Leaders</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto reveal-on-scroll">
-            See how contractors, plumbers, HVAC companies and more are transforming their customer service with PipelineGenerator.
+            See how contractors, plumbers, HVAC companies and more are transforming their customer service with Pipeline Generator.
           </p>
         </div>
         

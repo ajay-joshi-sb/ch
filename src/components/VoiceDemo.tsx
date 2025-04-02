@@ -5,32 +5,35 @@ import { Play, Pause, Volume2, VolumeX, Volume1, SkipBack, SkipForward, Headphon
 const callRecordings = [
   {
     id: 1,
-    title: "HVAC Service Call",
-    audioUrl: "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
-    description: "Inbound call for AC repair appointment",
-    date: "Oct 15, 2024",
-    duration: "2:34",
-    icon: "hvac"
+    title: "Trash Pickup Scheduling",
+    audioUrl: "https://storage.googleapis.com/pipeline-generator-website-data/adfghjkl.wav",
+    description: "Customer scheduling a large trash pickup",
+    // date: "Mar 18, 2025",
+    duration: "4:10",
+    icon: "junk-removal"
   },
   {
     id: 2,
-    title: "Plumbing Emergency",
-    audioUrl: "https://dl.sndup.net/d72p/hvac-demo-call.mp3",
-    description: "After-hours call for water leak",
-    date: "Oct 12, 2024",
-    duration: "3:12",
-    icon: "plumbing"
+    title: "Insulation Service Appointment",
+    audioUrl: "https://storage.googleapis.com/pipeline-generator-website-data/zxcvbnm.wav",
+    description: "Booking professional insulation services",
+    // date: "Mar 20, 2025",
+    duration: "3:30",
+    icon: "insulation"
   },
   {
     id: 3,
-    title: "Roofing Estimate",
-    audioUrl: "https://dl.sndup.net/d72p/hvac-demo-call.mp3",
-    description: "New customer requesting quote",
-    date: "Oct 8, 2024",
-    duration: "4:05",
-    icon: "roofing"
-  }
+    title: "Junk Removal Inquiry",
+    audioUrl: "https://storage.googleapis.com/pipeline-generator-website-data/qwertyuiop.wav",
+    description: "Customer requesting junk removal service",
+    // date: "Mar 25, 2025",
+    duration: "2:45",
+    icon: "junk-removal"
+  },
+  
+  
 ];
+
 
 const VoiceDemo = () => {
   const [activeRecording, setActiveRecording] = useState(0);
@@ -321,7 +324,7 @@ const VoiceDemo = () => {
 
   const getIconForService = (iconType) => {
     switch (iconType) {
-      case 'hvac':
+      case 'junk-removal':
         return (
           <div className="p-2 bg-blue-500/20 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-4 h-4 text-blue-400">
@@ -329,7 +332,7 @@ const VoiceDemo = () => {
             </svg>
           </div>
         );
-      case 'plumbing':
+      case 'insulation':
         return (
           <div className="p-2 bg-cyan-500/20 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-4 h-4 text-cyan-400">
@@ -351,7 +354,7 @@ const VoiceDemo = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#0a1425] to-[#071018] py-10">
+    <div className="w-full bg-gradient-to-b from-[#141428] to-[#1e1e3c] text-white py-20 relative overflow-hidden">
       <div className="text-center mb-8 md:mb-10 lg:mb-12 pt-8">
         <div className="inline-block px-3 py-1 mb-6 text-sm font-medium text-brand-300 bg-brand-900/40 rounded-full border border-brand-700/50">
           Service Demo
@@ -535,7 +538,7 @@ const VoiceDemo = () => {
                       </p>
                       <div className="flex items-center justify-between">
                         <p className="text-xs text-gray-400 truncate">{recording.description}</p>
-                        <p className="text-xs text-gray-500">{recording.date}</p>
+                        {/* <p className="text-xs text-gray-500">{recording.date}</p> */}
                       </div>
                     </div>
                     
